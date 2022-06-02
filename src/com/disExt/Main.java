@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 	// write your code here
 
         File archivo = new File("electronic_card_transactions.csv");
@@ -16,11 +16,15 @@ public class Main {
             System.out.println("\nDispone del csv PERFECTO");
         }
 
+
         // Menú:
-        
+
         int opcion = 0; //inicializamos la variable para elegir que opcion del menu
         Boolean salir = false; //inicializamos salir como false, para que no salga del menu
 
+        Tarjeta[] transaccionesCSV= new Tarjeta[18025];
+
+        try(Scanner scanner = new Scanner(System.in)){
             while (salir == false){
                 System.out.println("\n\n       MENU OPCIONES INICIAL     ");
                 System.out.println("\n 1- BUSCAR POR FECHA  ");
@@ -28,6 +32,7 @@ public class Main {
                 System.out.println("\n 3- EXPORTAR NUEVO PDF ");
                 System.out.println("\n 4  SALIR");
 
+                opcion = scanner.nextInt();
                 switch (opcion){
                     case 1:
 

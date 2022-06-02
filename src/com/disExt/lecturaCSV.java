@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,33 +13,56 @@ public class lecturaCSV {
 
     //clase creada para hacer la lectrua del csv
 
+
     //instanciamos un nuevo separador
-    public static void leerCSV(Tarjeta tarjetadata[]) throws FileNotFoundException{
+    public static final String Separador = ",";
 
-        BufferedReader filereader = null;
-        //String linea = "";
-
-        List<Tarjeta> data = new ArrayList<>();
-        try {
-            filereader = new BufferedReader(new FileReader("electronic_card_transactions.csv"));
-            String linea = filereader.readLine();
-            while (linea != null) {
-                String[] datos = linea.split(","); //nos creamos un array separados por comas
-                //Electronics elec = creararray(datos);
-                //data.add(elec);
-                linea = filereader.readLine();
-                System.out.println(datos);
+    public static void leerCSV(Tarjeta tarjetadata[], String path) throws IOException {
 
 
+        //nos creamos el bufferedReader
+        BufferedReader br = null;
+        int objetocsv = 0;
+        for(int i = 0; i < tarjetadata.length; i++){
+            tarjetadata[i] = new Tarjeta();
 
-                //break; //con el break solo mostramos la cabecera, para ver si puede mostrar todo
+        }
+
+        try{
+            br = new BufferedReader(new FileReader(path));
+            String linea = br.readLine();
+
+            while (linea != null){
+                String arreglo[] = linea.split(Separador);
+                if(objetocsv != 0){
+                    tarjetadata[objetocsv].setSerie(arreglo[0]);
+                    tarjetadata[objetocsv].setPeriodo(new SimpleDateFormat("yyyy.mm").parse(arreglo[1]));
+                    //omito el atributo date para probar
+                    try {
+                        tarjetadata[objetocsv].setValue(Float.parseFloat(arreglo[2]));
+                    }catch (Exception ex1){
+                        tarjetadata[objetocsv].setValue(0);
+                    }
+                    tarjetadata[objetocsv].setStatus(arreglo[4].charAt(0));
+                    tarjetadata[objetocsv].setUnits(arreglo[5]);
+                    tarjetadata[objetocsv].setSubject(arreglo[6]);
+                    tarjetadata[objetocsv].setGroup(arreglo[7]);
+                    tarjetadata[objetocsv].setTitles1(arreglo[8]);
+                    tarjetadata[objetocsv].setTitles2(arreglo[10]);
+
+
+
+                }
+
+                objetocsv++;
+                linea = br.readLine();
             }
-
-
-        } catch (FileNotFoundException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }finally {
+            if(null != br){
+                br.close();
+            }
         }
     }
 }

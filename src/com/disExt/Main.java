@@ -1,5 +1,6 @@
 package com.disExt;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -8,9 +9,15 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
+        File archivo = new File("electronic_card_transactions.csv");
+        if (!archivo.exists()) { // si no existe
+            System.out.println("El archivo indicado no existe");
+        } else {
+            System.out.println("\nDispone del csv PERFECTO");
+        }
+
         // Menú:
-
-
+        
         int opcion = 0; //inicializamos la variable para elegir que opcion del menu
         Boolean salir = false; //inicializamos salir como false, para que no salga del menu
 

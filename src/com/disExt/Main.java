@@ -1,12 +1,17 @@
 package com.disExt;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
+import static com.disExt.lecturaCSV.leerCSV;
+import static com.disExt.programMethods.buscarPorFecha;
+import static com.disExt.programMethods.getEntradas;
+
 public class Main {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, IOException {
 	// write your code here
 
         File archivo = new File("electronic_card_transactions.csv");
@@ -35,9 +40,13 @@ public class Main {
                 opcion = scanner.nextInt();
                 switch (opcion){
                     case 1:
-
+                        leerCSV(transaccionesCSV,"electronic_card_transactions.csv");
+                        buscarPorFecha(transaccionesCSV);
+                        break;
                     case 2:
 
+                        leerCSV(transaccionesCSV,"electronic_card_transactions.csv");
+                        getEntradas(transaccionesCSV);
                     case 3:
 
                     case 4:

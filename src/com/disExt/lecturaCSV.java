@@ -23,7 +23,7 @@ public class lecturaCSV {
         //nos creamos el bufferedReader
         BufferedReader br = null;
         int objetocsv = 0;
-        for(int i = 0; i < tarjetadata.length; i++){
+        for(int i = 0; i < tarjetadata.length; i++){ //recorremos el array de datos de las tarjetas e intanciamos cada uno como un objeto java Tarjeta
             tarjetadata[i] = new Tarjeta();
 
         }
@@ -49,7 +49,7 @@ public class lecturaCSV {
                     tarjetadata[objetocsv].setGroup(arreglo[7]);
                     tarjetadata[objetocsv].setTitles1(arreglo[8]);
                     tarjetadata[objetocsv].setTitles2(arreglo[10]);
-                    
+
                 }
 
                 objetocsv++;

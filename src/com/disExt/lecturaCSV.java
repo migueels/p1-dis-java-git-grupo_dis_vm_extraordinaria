@@ -49,9 +49,7 @@ public class lecturaCSV {
                     tarjetadata[objetocsv].setGroup(arreglo[7]);
                     tarjetadata[objetocsv].setTitles1(arreglo[8]);
                     tarjetadata[objetocsv].setTitles2(arreglo[10]);
-
-
-
+                    
                 }
 
                 objetocsv++;

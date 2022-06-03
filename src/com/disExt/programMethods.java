@@ -16,11 +16,15 @@ public class programMethods {
 
     //en esta clase implementamos los metodo usados para el menu
 
+
+
     //metodo para devolver las transacciones de la opcion 1
     public static void getEntradas(Tarjeta tarjetadata[]) throws FileNotFoundException, IOException {
-        for(int i = 0; i< tarjetadata.length; i++){
-            if(tarjetadata[i].getValue() >= 1000 && tarjetadata[i].getValue() <= 10000){
+        for(int i = 0; i< tarjetadata.length; i++){ //recorremos el array que le pasamos por parametro con los objetos java
+            if(tarjetadata[i].getValue() >= 1000 && tarjetadata[i].getValue() <= 10000){ //con if comprobamos aquellos cuyo valor este entre 1000 - 10000
+                //para aquellos que cumplen esa confidion if, println con los datos de la transaccion
                 System.out.println("la transaccion: " + tarjetadata[i].getSerie() + " tiene un importe de: " + tarjetadata[i].getValue() + "$");
+
             }
         }
     }
@@ -50,10 +54,10 @@ public class programMethods {
         long importeTotal = 0;
 
 
-        for(int i = 0; i < tarjetadata.length; i++){
-            if(date.equals(tarjetadata[i].getPeriodo())){
+        for(int i = 0; i < tarjetadata.length; i++){ //recorremos el array de entrada on los objetos java
+            if(date.equals(tarjetadata[i].getPeriodo())){ //comprobamos si la fecha que hemos introducido es igual a la fecha Periodo del csv
                 System.out.println("El importe de la transaccion  " + tarjetadata[i].getSerie() + "  a fecha  " + fechaformato + "  es de:  " + tarjetadata[i].getValue());
-                importeTotal = (long) (importeTotal + tarjetadata[i].getValue());
+                importeTotal = (long) (importeTotal + tarjetadata[i].getValue()); //calculamos el importe total de las transacciones
             }
         }
 
@@ -64,29 +68,29 @@ public class programMethods {
     //funcion exportar un nuevo CSV
     public static void exportCSV(String filename,Tarjeta tarjetadata[]) throws IOException{
         //CardDatos[] cardDatos = new CardDatos[18025];
-        String[] data = new String[tarjetadata.length];
+        String[] data = new String[tarjetadata.length]; //nos cremos un rray del mismo tamaño que el de entrada
         int i= 0;
         //String csv = "salida.csv";
-        String[] headers = {"Tittles 2"};
+        String[] headers = {"Tittles 2"}; //establecemos la cabecera del csv
         CSVWriter newCsv = new CSVWriter(new FileWriter(filename), '\n');
         //CSVWriter newCsv = new CSVWriter(new FileWriter(filename));
 
-        newCsv.writeNext(headers);
+        newCsv.writeNext(headers); //implementamos la cabecera
 
 
-        for(int j = 0; j < tarjetadata.length; j++){
-            if("credit".equalsIgnoreCase(tarjetadata[j].getTitles2())){
-
-                data[i] = String.valueOf(tarjetadata[j].getValue());
-                i++;
+        for(int j = 0; j < tarjetadata.length; j++){ //recorremos el array de entrada con los objetos java
+            //comprobamos si el titles 2 es igual a credit
+            if("credit".equalsIgnoreCase(tarjetadata[j].getTitles2())){  //usamos equalignorecase para que no tome mayusculas ni minusculas
+                data[i] = String.valueOf(tarjetadata[j].getValue()); //intertamos en el array data la info recogida de la comprobacion
+                i++; //incrementamos para i cogiendo la siguiente
             }
         }
 
-        newCsv.writeNext(data);
+        newCsv.writeNext(data); //escribimos los datos del array data en el csv nuevo
         newCsv.close();
 
         File archivo = new File("salida.csv");
-        if (!archivo.exists()) { // si no existe
+        if (!archivo.exists()) { // si no existe //comprobamos si efectivamente se ha creado el nuevo csv
             System.out.println("El archivo indicado no existe");
         } else {
             System.out.println("\nSe creo el archivo salida.csv correctamente");

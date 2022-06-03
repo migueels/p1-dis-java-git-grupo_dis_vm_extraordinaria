@@ -115,16 +115,9 @@ public class Tarjeta {
 
     @Override
     public String toString() {
-        return "CardDatos{" +
+        return "Tarjeta{" +
                 "serie='" + serie + '\'' +
-                ", periodo=" + periodo +
-                ", value=" + value +
-                ", status=" + status +
-                ", units='" + units + '\'' +
-                ", subject='" + subject + '\'' +
-                ", group='" + group + '\'' +
-                ", titles1='" + titles1 + '\'' +
-                ", titles2='" + titles2 + '\'' +
+                "value='" + value + '\'' +
                 '}';
     }
 }

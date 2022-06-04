@@ -6,7 +6,12 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import static com.disExt.lecturaCSV.leerCSV;
+<<<<<<< HEAD
 import static com.disExt.programMethods.*;
+=======
+import static com.disExt.programMethods.buscarPorFecha;
+import static com.disExt.programMethods.getEntradas;
+>>>>>>> 7f0cf2d8214ee5ce64d3aa1966fe97fa4a245e7a
 
 public class Main {
 

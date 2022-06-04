@@ -63,4 +63,26 @@ public class lecturaCSV {
             }
         }
     }
+
+    /*public List<Tarjeta> parseCSV(String path){ //metodo
+        try{
+            BufferedReader filereader = new BufferedReader(new FileReader("electronic_card_transactions.csv"));
+
+            CsvToBean<Tarjeta> cvsToBean = new CsvToBeanBuilder<GolfPlayer>(filereader)
+                    .withType(Tarjeta.class)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .build();
+
+            //nos creamos el array de las transacciones
+            List<Tarjeta> transacciones = cvsToBean.parse();
+            return transacciones;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        //nos cremos u buffered reader
+
+    }
+
+     */
 }

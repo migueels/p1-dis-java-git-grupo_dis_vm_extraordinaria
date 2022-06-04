@@ -6,8 +6,7 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import static com.disExt.lecturaCSV.leerCSV;
-import static com.disExt.programMethods.buscarPorFecha;
-import static com.disExt.programMethods.getEntradas;
+import static com.disExt.programMethods.*;
 
 public class Main {
 
@@ -46,10 +45,13 @@ public class Main {
                         break;
                     case 2:
 
-                        leerCSV(transaccionesCSV,"electronic_card_transactions.csv");
-                        getEntradas(transaccionesCSV);
+                        leerCSV(transaccionesCSV,"electronic_card_transactions.csv");  //hacemos una llamada al metodo lecturaCSV con el array creado y el csv
+                        getEntradas(transaccionesCSV); //llamamos a la funcion getEntrada con un array con los objetos java de la lectura
                     case 3:
 
+                        leerCSV(transaccionesCSV,"electronic_card_transactions.csv"); //hacemos una llamada al metodo lecturaCSV con el array creado y el csv
+                        exportCSV("salida.csv", transaccionesCSV); //llamamos a exportCSV con un array con los objetos java de la lectura
+                        break;
                     case 4:
                         System.out.println("salida de programa con exito");
                         salir = true;
